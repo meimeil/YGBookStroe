@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table-filter match-schema="shop" match-name=".*"></table-filter>
+	<table-filter match-name="bargain" match-catalog="shop"></table-filter>
+	<table-filter match-name="book" match-catalog="shop"></table-filter>
+	<table-filter match-name="booktype" match-catalog="shop"></table-filter>
+	<table-filter match-name="manager" match-catalog="shop"></table-filter>
+	<table-filter match-name="orders" match-catalog="shop"></table-filter>
+	<table-filter match-name="ordersbook" match-catalog="shop"></table-filter>
+	<table-filter match-name="recommended" match-catalog="shop"></table-filter>
+	<table-filter match-name="sex" match-catalog="shop"></table-filter>
+	<table-filter match-name="user" match-catalog="shop"></table-filter>
+</hibernate-reverse-engineering>

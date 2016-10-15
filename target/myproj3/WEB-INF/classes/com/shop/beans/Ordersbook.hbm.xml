@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-6 15:56:43 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+    <class name="com.shop.beans.Ordersbook" table="ordersbook" catalog="shop" optimistic-lock="version">
+        <id name="ordersbookId" type="java.lang.Integer">
+            <column name="ordersbookId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="book" class="com.shop.beans.Book" fetch="select">
+            <column name="bookId" not-null="true">
+                <comment>&#205;&#188;&#202;&#233;ID</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="orders" class="com.shop.beans.Orders" fetch="select">
+            <column name="ordersId" not-null="true">
+                <comment>&#182;&#169;&#181;&#165;ID</comment>
+            </column>
+        </many-to-one>
+        <property name="bookAmount" type="int">
+            <column name="bookAmount" not-null="true">
+                <comment>&#205;&#188;&#202;&#233;&#185;&#186;&#194;&#242;&#202;&#253;&#193;&#191;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-6 15:56:43 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+ <class catalog="shop" name="com.shop.beans.Orders" table="orders">
+  <id name="ordersId" type="int">
+   <column name="ordersId"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="com.shop.beans.User" fetch="select" name="user">
+   <column name="userid" not-null="true">
+    <comment>ÓÃ»§idºÅ</comment>
+   </column>
+  </many-to-one>
+  <property generated="never" lazy="false" name="orderNumber" type="string">
+   <column length="21" name="orderNumber" not-null="true">
+    <comment>¶©µ¥±àºÅ</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="ordersTime" type="timestamp">
+   <column length="19" name="ordersTime" not-null="true">
+    <comment>¶©µ¥Ê±¼ä</comment>
+   </column>
+  </property>
+  <property generated="never" lazy="false" name="isDeal" type="char">
+   <column length="1" name="isDeal" not-null="true">
+    <comment>´¦Àí×´Ì¬</comment>
+   </column>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="ordersbooks"
+   sort="unsorted" table="ordersbook">
+   <key>
+    <column name="ordersId" not-null="true">
+     <comment>¶©µ¥ID</comment>
+    </column>
+   </key>
+   <one-to-many class="com.shop.beans.Ordersbook"/>
+  </set>
+ </class>
+</hibernate-mapping>

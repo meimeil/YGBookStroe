@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory>
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">root</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/shop?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;failOverReadOnly=false</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <property name="hbm2ddl.auto">update</property>
+  <property name="javax.persistence.validation.mode">none</property>
+   <mapping resource="com/shop/beans/User.hbm.xml"/>
+  <mapping resource="com/shop/beans/Bargain.hbm.xml"/>
+  <mapping resource="com/shop/beans/Book.hbm.xml"/>
+  <mapping resource="com/shop/beans/Manager.hbm.xml"/>
+  <mapping resource="com/shop/beans/Booktype.hbm.xml"/>
+  <mapping resource="com/shop/beans/Ordersbook.hbm.xml"/>
+  <mapping resource="com/shop/beans/Orders.hbm.xml"/>
+  <mapping resource="com/shop/beans/Recommended.hbm.xml"/>
+  <mapping resource="com/shop/beans/Sex.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

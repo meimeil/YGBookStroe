@@ -1,0 +1,12 @@
+com\shop\beans\Bargain.class
+com\shop\beans\Book.class
+com\shop\action\EnrollAction.class
+com\shop\beans\Sex.class
+com\shop\beans\Recommended.class
+com\shop\beans\User.class
+com\shop\common\HibernateSessionFactory.class
+com\shop\beans\Orders.class
+com\shop\beans\Booktype.class
+com\shop\beans\Manager.class
+Dao\PersonManage.class
+com\shop\beans\Ordersbook.class

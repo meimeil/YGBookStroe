@@ -1,0 +1,40 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- default-autowire="byName" default-lazy-init="true"<context:annotation-config /> -->
+
+	<bean id="EnrollAction" class="com.shop.action.EnrollAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="personManage">
+			<ref bean="personManage" />
+		</property>
+	</bean>
+	
+	<bean id="personManage" class="Dao.PersonManage" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- 使用hibernate.cfg.xml配置文件 -->
+		<property name="configLocations">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+	</bean>
+	
+	<bean id="LeftAction" class="com.shop.action.LeftAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="bookManage">
+			<ref bean="bookManage" />
+		</property>
+	</bean>
+	<bean id="bookManage" class="Dao.BookManage" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+</beans>

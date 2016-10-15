@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-10-6 15:56:43 by Hibernate Tools 5.2.0.Beta1 -->
+<hibernate-mapping>
+ <class catalog="shop" name="com.shop.beans.Booktype" table="booktype">
+  <id name="typeId" type="int">
+   <column name="typeId"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="typeName" type="string">
+   <column length="16" name="typeName" not-null="true">
+    <comment>Àà±ðÃèÊö</comment>
+   </column>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="books"
+   sort="unsorted" table="book">
+   <key>
+    <column name="typeId" not-null="true">
+     <comment>Àà±ðID</comment>
+    </column>
+   </key>
+   <one-to-many class="com.shop.beans.Book"/>
+  </set>
+ </class>
+</hibernate-mapping>
