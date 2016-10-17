@@ -4,14 +4,17 @@ img{ border: 0px;}
 li{ list-style: none; }
 
 /*以下为指定设置*/
+#firstPage{
+	
+}
 #top,#bottom,#login,#enroll,#firstPage,#managerLogin,#singleBook,#oneType,#personalInformation,#updatePassword,#shoppingCart,#orders{
-	width: 900px;
+	width: 90%;
 	background-color: white;
 }
 #logo{
 	float: left;
-	margin-top: 30px;
-	width: 200px;
+	margin-top: 10px;
+	width: 30%;
 }
 #logoLink{
 	float: left;
@@ -20,16 +23,33 @@ li{ list-style: none; }
 	text-align: right;
 }
 #searchBook{
-	width:650px;
-	text-align: left;
-	padding-left: 200px;
+	
+	padding-left:20%;
+	margin-top: 30px;
+	width:18%;
+	float:left;
+	position:relative;
+	bottom:0;
+	align:left;
 }
-#login,#enroll,#managerLogin,#personalInformation,#updatePassword{
+#buttom{
+	float:left;
+	margin-top:600px;
+	margin-left:-200px;
+	
+	
+}
+input.search{
+	margin-top: 40px;
+	float:left;
+
+}
+#enroll,#managerLogin,#personalInformation,#updatePassword{
 	height: 200px;
 	padding-top: 50px;
 }
 #left,ul.leftBook,li.leftBestSelling,li.leftBookAuthor,li.leftBookPress,li.leftBookType{
-	width: 180px;
+	width: 190px;
 }
 #left{
 	float: left;
@@ -62,14 +82,14 @@ li.leftBookName,li.leftBookAuthor,li.leftBookPress,li.leftBookType{
 	padding-left: 5px;
 }
 #allBook,#bookInfor,#shoppingBook,#ordersInfor{
-	width: 700px;
+	width: 650px;
 	float: left;
 	padding-top: 10px;
-	margin-left: 10px;
+	margin-left: 15px;
 	height: 440px;
 }
 ul.allBookUl,ul.singleBookUl{
-	width: 700px;
+	
 	float: left;
 }
 ul.singleBookUl{
@@ -77,16 +97,16 @@ ul.singleBookUl{
 	padding-top: 10px;
 }
 li.allBookHead,li.singleBookName,li.shoppingBookHead{
-	width: 700px;	
+	padding: 5px;
 	background-color: #FF6600;
 	text-align: left;
-	padding: 5px;
+	
 	font-weight: bold;
 	color:yellow;
 	margin-bottom: 10px;
 }
 li.allBookPicture,li.singleBookPicture{
-	width: 140px;
+	width: 120px;
 	float: left;
 	height: 120px;
 }
@@ -95,7 +115,7 @@ li.allBookPicture img,li.singleBookPicture img{
 	height: 104px;
 }
 li.allBookInfor{
-	width: 210px;
+	width: 150px;
 	float: left;
 	padding-left: 10px;
 	text-align: left;
@@ -112,7 +132,7 @@ li.leftBestSelling a{
 	width: 50px;
 }
 li.allBookHead a{
-	margin-left: 580px;
+	margin-left: 550px;
 	width: 50px;	
 }
 li.bookName,li.bookPrice,li.sequence,li.ordersNumber,li.isDeal,li.ordersTime,li.bookPress,li.bookAmount2{

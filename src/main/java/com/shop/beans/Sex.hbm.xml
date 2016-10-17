@@ -13,7 +13,7 @@
     <comment>ÐÔ±ðÃèÊö</comment>
    </column>
   </property>
-  <set fetch="select" inverse="true" lazy="true" name="users"
+  <set fetch="select" inverse="true" lazy="false" name="users"
    sort="unsorted" table="user">
    <key>
     <column name="sexId" not-null="true">

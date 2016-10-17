@@ -1,6 +1,7 @@
 package Dao;
 import com.shop.beans.Bargain;
 import com.shop.beans.Book;
+import com.shop.beans.Recommended;
 import com.shop.beans.Sex;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -53,6 +54,53 @@ public class BookManage extends HibernateDaoSupport{
 		HibernateSessionFactory.closeSession();
 		
 		return bargain;
+	}
+	public List<Recommended> allRecommended(int pageNumber,int pageSize) {
+		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();
+		String sql= "from Recommended ";
+		List<Recommended> listRecmmended=null;
+		try{
+			Query query = session.createQuery(sql);
+			query.setFirstResult((pageNumber-1)*pageSize);
+			query.setMaxResults(pageSize);
+			listRecmmended=query.list();
+			HibernateSessionFactory.closeSession();
+		}catch(RuntimeException er){
+			er.printStackTrace();
+		}
+		return listRecmmended;
+	}
+	public List<Bargain> allBargain(int pageNumber,int pageSize) {
+		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();
+		String sql= "from Bargain ";
+		List<Bargain> listBargain=null;
+		try{
+			Query query = session.createQuery(sql);
+			query.setFirstResult((pageNumber-1)*pageSize);
+			query.setMaxResults(pageSize);
+			listBargain=query.list();
+			HibernateSessionFactory.closeSession();
+		}catch(RuntimeException er){
+			er.printStackTrace();
+		}
+		return listBargain;
+	}
+	public List<Book> latestBook(int pageNumber,int pageSize) {
+		Session session = HibernateSessionFactory.getSession();
+		String sql= "from Book as book where book.bookAmount>0 order by book.bookShelveTime desc";
+		List<Book> listLatestBook=null;
+		try{
+			Query query = session.createQuery(sql);
+			query.setFirstResult((pageNumber-1)*pageSize);
+			query.setMaxResults(pageSize);
+			listLatestBook=query.list();
+			HibernateSessionFactory.closeSession();
+		}catch(RuntimeException er){
+			er.printStackTrace();
+		}
+		return listLatestBook;
 	}
 
 }

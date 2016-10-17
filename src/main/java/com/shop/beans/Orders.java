@@ -24,11 +24,19 @@ public class Orders implements java.io.Serializable {
 
 	private int ordersId;
 	private User user;
-	private String orderNumber;
+	private String orderNumber;//s
 	private Date ordersTime;
 	private char isDeal;
 	private Set<Ordersbook> ordersbooks = new HashSet<Ordersbook>(0);
-	
+	private Double totalMoney;
+
+	public Double getTotalMoney() {
+		return totalMoney;
+	}
+
+	public void setTotalMoney(Double totalMoney) {
+		this.totalMoney = totalMoney;
+	}
 
 	public Orders() {
 	}

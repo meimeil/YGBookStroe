@@ -23,7 +23,7 @@ import javax.persistence.TemporalType;
 public class Book implements java.io.Serializable {
 
 	private int bookid;
-	private Booktype booktype;
+	private Booktype booktype;//
 	private String bookNumber;
 	private String bookName;
 	private String bookAuthor;

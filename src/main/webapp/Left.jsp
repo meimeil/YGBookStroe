@@ -9,8 +9,8 @@
 <title>销量排行榜</title>
 </head>
 <body>
-<s:form action="leftAction"  executeResult="false">
-	<!--<s:action name="leftAction" executeResult="false"></s:action> 访问action文件，立即执行，且不显示执行结果 -->
+
+	<s:action name="leftAction" executeResult="false"></s:action> <!-- 访问action文件，立即执行，且不显示执行结果 -->
 	<ul class="leftAction" >
 		<li class="leftBestSelling">销量排行榜<a class="more" href="oneType.jsp?searchType=bookStatus&searchDescribe=bestSelling">更多</a>
 		</li>
@@ -35,6 +35,6 @@
 			<li><hr/></li>
 		</s:iterator>
 	</ul>
-	</s:form>
+	
 </body>
 </html>

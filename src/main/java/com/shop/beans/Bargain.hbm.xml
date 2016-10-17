@@ -8,7 +8,7 @@
             <column name="bargainId" />
             <generator class="identity" />
         </id>
-        <many-to-one name="book" class="com.shop.beans.Book" fetch="select">
+        <many-to-one name="book" class="com.shop.beans.Book" fetch="select" lazy="false">
             <column name="bookId" not-null="true">
                 <comment>&#205;&#188;&#202;&#233;ID</comment>
             </column>

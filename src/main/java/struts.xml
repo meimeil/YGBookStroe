@@ -10,11 +10,31 @@
 	<package name="defaulet" extends="struts-default" ><!--   -->
 	  	<action name="enrollAction"   class="EnrollAction" >
 	  			<result name="input">/enroll.jsp</result>
-	  			<result name="success">/index.jsp</result>
+	  			<result name="success">/login.jsp</result>
+		</action>
+		<action name="loginAction"   class="LoginAction" method="loginCheck">
+	  			<result name="input">/login.jsp</result>
+	  			<result name="success" type="redirect">/firstPage.jsp</result>
+		</action>
+		<action name="allBookAction"   class="AllBookAction" >
+		</action>
+		<action name="userExitAction"   class="UserExitAction" >
+		</action>
+		<action name="userInforAction"   class="UserInforAction" >
+			<result name="input">/personalInformation.jsp</result>
+	  			<result name="success" type="redirect">/firstPage.jsp</result>
+	  			<result name="error"  type="redirect">/error.jsp</result>
 		</action>
 		<action name="leftAction"   class="LeftAction" >
 		<result name="input">/Left.jsp</result>
 	  			<result name="success">/Left.jsp</result>
 		</action>
+		<action name="ordersManageAction"   class="OrdersManageAction" >
+		
+		</action>
+		<action name="updateCartAction"   class="UpdateCartAction" >
+		
+		</action>
+		
 	</package>
 </struts>

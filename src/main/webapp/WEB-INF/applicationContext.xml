@@ -2,7 +2,7 @@
 <beans
 	xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<!-- default-autowire="byName" default-lazy-init="true"<context:annotation-config /> -->
 
@@ -14,7 +14,7 @@
 	</bean>
 	
 	<bean id="personManage" class="Dao.PersonManage" abstract="false"
-		lazy-init="default" autowire="default" dependency-check="default">
+		lazy-init="default" autowire="default" >
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
@@ -33,8 +33,36 @@
 		</property>
 	</bean>
 	<bean id="bookManage" class="Dao.BookManage" abstract="false"
-		lazy-init="default" autowire="default" dependency-check="default">
+		lazy-init="default" autowire="default" >
 		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="OrdersManageAction" class="com.shop.action.OrdersManageAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		
+	</bean>
+	<bean id="LoginAction" class="com.shop.action.LoginAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="personManage">
+			<ref bean="personManage" />
+		</property>
+	</bean>
+	<bean id="UserInforAction" class="com.shop.action.UserInforAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="personManage">
+			<ref bean="personManage" />
+		</property>
+	</bean>
+	<bean id="UserExitAction" class="com.shop.action.UserExitAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="personManage">
+			<ref bean="personManage" />
+		</property>
+	</bean>
+	<bean id="AllBookAction" class="com.shop.action.AllBookAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="bookManage">
+			<ref bean="bookManage" />
+		</property>
 	</bean>
 	
 </beans>
