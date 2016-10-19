@@ -23,7 +23,7 @@
 						<a class="bookName" href="singleBook.jsp?bookId=<s:property value="bookid" />"><s:property value="bookName" /></a><br/><br/>
 						作者：<a class="aboutBook" href="oneType.jsp?searchType=bookAuthor&searchDescribe=<s:property value="bookAuthor"/>"><s:property value="bookAuthor"/></a><br/><br/>
 						出版社：<a class="aboutBook" href="oneType.jsp?searchType=bookPress&searchDescribe=<s:property value="bookPress"/>"><s:property value="bookPress"/></a><br/><br/>
-						类别：<a class="aboutBook" href="oneType.jsp?searchType=bookType&searchDescribe=<s:property value="booktype"/>"><s:property value="booktype.typeName"/></a><br/><br/>
+						类别：<a class="aboutBook" href="oneType.jsp?searchType=bookType&searchDescribe=<s:property value="booktype.typeId"/>"><s:property value="booktype.typeName"/></a><br/><br/>
 					</li>
 				</s:iterator>
     		</ul>

@@ -30,7 +30,7 @@
 						上架时间：<s:date name="#request.singleBook.bookShelveTime" format="yyyy-MM-dd HH:mm:ss"/><br/><br/>
 						图书简介：<s:property value="#request.singleBook.bookRemark"/><br/><br/>
 						原价：<font style="text-decoration: line-through;color:red;"><s:property value="#request.singleBook.bookPrice"/></font> 元&nbsp;&nbsp;&nbsp;&nbsp;现价：<s:property value="#request.singleBook.bookNewPrice"/> 元<br/><br/><br/><br/>
-						<a href='com.shop.beans.action/shoppingCartAction.action?bookid=<s:property value="#request.singleBook.bookId"/>' style="text-decoration: none;">
+						<a href='com.shop.beans.action/shoppingCartAction.action?bookId=<s:property value="#request.singleBook.bookid"/>' style="text-decoration: none;">
 						<img alt="放入购物车" src="image/button.jpg">
 						</a>
 					</li>

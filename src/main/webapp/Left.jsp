@@ -20,7 +20,7 @@
 			<img  src='upload/<s:property value="bookPicture" />'/></a>
 			</li>
 			
-			<li class="leftBookName"><a class="bookName" href="singleBook.jsp?bookid=<s:property value="bookid"/>">
+			<li class="leftBookName"><a class="bookName" href="singleBook.jsp?bookId=<s:property value="bookid"/>">
 			<s:property value="bookName"/></a>
 			</li>
 			<li class="leftBookAuthor">作者：<a class="aboutBook" href="oneType.jsp?searchType=bookAuthor&searchDescribe=<s:property value="bookAuthor"/>">
@@ -29,7 +29,7 @@
 			<li class="leftBookPress">出版社：<a class="aboutBook" href="oneType.jsp?searchType=bookPress&searchDescribe=<s:property value="bookPress"/>">
 			<s:property value="bookPress"/></a>
 			</li>
-			<li class="leftBookType">类别：<a class="aboutBook" href="oneType.jsp?searchType=booktype&searchDescribe=<s:property value="booktype"/>">
+			<li class="leftBookType">类别：<a class="aboutBook" href="oneType.jsp?searchType=bookType&searchDescribe=<s:property value="booktype.typeId"/>">
 			<s:property value="booktype.typeName"/></a>
 			</li>
 			<li><hr/></li>

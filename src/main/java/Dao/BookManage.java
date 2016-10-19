@@ -1,6 +1,7 @@
 package Dao;
 import com.shop.beans.Bargain;
 import com.shop.beans.Book;
+import com.shop.beans.Booktype;
 import com.shop.beans.Recommended;
 import com.shop.beans.Sex;
 
@@ -29,7 +30,7 @@ public class BookManage extends HibernateDaoSupport{
 	}
 	public Book findBook(int bookId) {
 		Session session = HibernateSessionFactory.getSession();
-		String sql= "from book where bookid ="+bookId;
+		String sql= "from Book as book where book.bookid ='"+bookId+"'";
 		Book book = null;
 		try{
 			Query query = session.createQuery(sql);
@@ -43,7 +44,7 @@ public class BookManage extends HibernateDaoSupport{
 	}
 	public Bargain isBargain(int bookId){
 		Session session = HibernateSessionFactory.getSession();
-		String sql= "from bargain where bookId ="+bookId;
+		String sql= "from Bargain as bargain where  bargain.book.bookid= '"+bookId+"'";
 		Bargain bargain = null;
 		try{
 			Query query = session.createQuery(sql);
@@ -71,6 +72,7 @@ public class BookManage extends HibernateDaoSupport{
 		}
 		return listRecmmended;
 	}
+	@SuppressWarnings("unchecked")
 	public List<Bargain> allBargain(int pageNumber,int pageSize) {
 		// TODO Auto-generated method stub
 		Session session = HibernateSessionFactory.getSession();
@@ -87,6 +89,7 @@ public class BookManage extends HibernateDaoSupport{
 		}
 		return listBargain;
 	}
+	@SuppressWarnings("unchecked")
 	public List<Book> latestBook(int pageNumber,int pageSize) {
 		Session session = HibernateSessionFactory.getSession();
 		String sql= "from Book as book where book.bookAmount>0 order by book.bookShelveTime desc";
@@ -101,6 +104,85 @@ public class BookManage extends HibernateDaoSupport{
 			er.printStackTrace();
 		}
 		return listLatestBook;
+	}
+	public List<Book> allBookByName(String searchDescribe,int pageNumber,int pageSize) {
+		Session session = HibernateSessionFactory.getSession();
+		String sql= "from Book as book where book.bookAmount>0 and book.bookName like '%"+searchDescribe+"%'";
+		List<Book> listByNameBook=null;
+		try{
+			Query query = session.createQuery(sql);
+			query.setFirstResult((pageNumber-1)*pageSize);
+			query.setMaxResults(pageSize);
+			listByNameBook=query.list();
+			HibernateSessionFactory.closeSession();
+		}catch(RuntimeException er){
+			er.printStackTrace();
+		}
+		return listByNameBook;
+		
+	}
+	public List<Book> allBookByAuthor(String searchDescribe,int pageNumber,int pageSize) {
+		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();
+		String sql= "from Book as book where book.bookAmount>0 and book.bookAuthor like '%"+searchDescribe+"%'";
+		List<Book> listByAuthorBook=null;
+		try{
+			Query query = session.createQuery(sql);
+			query.setFirstResult((pageNumber-1)*pageSize);
+			query.setMaxResults(pageSize);
+			listByAuthorBook=query.list();
+			HibernateSessionFactory.closeSession();
+		}catch(RuntimeException er){
+			er.printStackTrace();
+		}
+		return listByAuthorBook;
+	}
+	public List<Book> allBookByPress(String searchDescribe, int pageNumber,int pageSize) {
+		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();
+		String sql= "from Book as book where book.bookAmount>0 and book.bookPress like '%"+searchDescribe+"%'";
+		List<Book> listByPressBook=null;
+		try{
+			Query query = session.createQuery(sql);
+			query.setFirstResult((pageNumber-1)*pageSize);
+			query.setMaxResults(pageSize);
+			listByPressBook=query.list();
+			HibernateSessionFactory.closeSession();
+		}catch(RuntimeException er){
+			er.printStackTrace();
+		}
+		return listByPressBook;
+	}
+	public Booktype findType(int typeId) {
+		// TODO Auto-generated method stub
+		Session session = HibernateSessionFactory.getSession();
+		String sql= "from Booktype as booktype where booktype.typeId='"+typeId+"'";
+		Booktype type=null;
+		try{
+			Query query = session.createQuery(sql);
+			type=(Booktype)query.list().get(0);
+			HibernateSessionFactory.closeSession();
+		}catch(RuntimeException er){
+			er.printStackTrace();
+		}
+		return type;
+	}
+	@SuppressWarnings("unchecked")
+	public List<Book> allBookByType(int typeId,int pageNumber,int pageSize) {
+		// book.booktype='"+type+"'";不行，等于后面还是不能跟对象。
+		Session session = HibernateSessionFactory.getSession();
+		String sql= "from Book as book where book.bookAmount>0 and book.booktype.typeId='"+typeId+"'";
+		List<Book> listByTypeBook=null;
+		try{
+			Query query = session.createQuery(sql);
+			query.setFirstResult((pageNumber-1)*pageSize);
+			query.setMaxResults(pageSize);
+			listByTypeBook=query.list();
+			HibernateSessionFactory.closeSession();
+		}catch(RuntimeException er){
+			er.printStackTrace();
+		}
+		return listByTypeBook;
 	}
 
 }

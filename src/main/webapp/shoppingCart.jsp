@@ -26,7 +26,7 @@ function addOrders(){
 //-->
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>shopping</title>
+<title>购物车</title>
 </head>
 <body>
 <ul class="shoppingBookUl">

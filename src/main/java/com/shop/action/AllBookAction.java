@@ -35,7 +35,6 @@ public class AllBookAction extends ActionSupport {
 		}
 		//ÐÂÊé
 		List<Book> latestBook = bookManage.latestBook(1, 6);
-		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		request.setAttribute("recommendedBook", recommendedBook);
 		request.setAttribute("bargainBook", bargainBook);

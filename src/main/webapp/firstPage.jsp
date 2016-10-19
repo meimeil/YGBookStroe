@@ -20,7 +20,7 @@
 				<jsp:include page="allBook.jsp"></jsp:include>
 			</div>		
 		</div>
-		<div id="buttom"><jsp:include page="bottom.html"></jsp:include></div>
+		<div id="bottom"><jsp:include page="bottom.html"></jsp:include></div>
 		
   	</center>
 </body>

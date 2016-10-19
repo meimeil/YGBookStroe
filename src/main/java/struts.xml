@@ -32,8 +32,17 @@
 		<action name="ordersManageAction"   class="OrdersManageAction" >
 		
 		</action>
-		<action name="updateCartAction"   class="UpdateCartAction" >
-		
+		<action name="oneTypeAction"   class="OneTypeAction" >
+				<result name="oneType" type="redirect">/oneType.jsp</result>
+	  			<result name="error"  type="redirect">/error.jsp</result>
+		</action>
+		<action name="singleBookAction"   class="SingleBookAction" >
+			<result name="success" type="redirect">/singleBook.jsp</result>
+	  			<result name="error"  type="redirect">/error.jsp</result>
+		</action>
+		<action name="shoppingCartAction"   class="ShoppingCartAction" >
+			<result name="success" type="redirect">/shoppingCart.jsp</result>
+	  			<result name="error"  type="redirect">/error.jsp</result>
 		</action>
 		
 	</package>

@@ -64,5 +64,22 @@
 			<ref bean="bookManage" />
 		</property>
 	</bean>
-	
+	<bean id="OneTypeAction" class="com.shop.action.OneTypeAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="bookManage">
+			<ref bean="bookManage" />
+		</property>
+	</bean>
+	<bean id="SingleBookAction" class="com.shop.action.SingleBookAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="bookManage">
+			<ref bean="bookManage" />
+		</property>
+	</bean>
+	<bean id="ShoppingCartAction" class="com.shop.action.ShoppingCartAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="orderManage">
+			<ref bean="orderManage" />
+		</property>
+	</bean>
 </beans>

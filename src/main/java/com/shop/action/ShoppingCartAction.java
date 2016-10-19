@@ -25,16 +25,16 @@ public class ShoppingCartAction extends ActionSupport{
 		String bookId = request.getParameter("bookId");//获取页面传来的servlet parameter
 		List<Book> shoppingBook = new ArrayList<Book>();
 		if(session.getAttribute("shoppingBook")==null){
-			session.setAttribute("shoppingBook", shoppingBook);
+			session.setAttribute("shoppingBook", shoppingBook);//没有购物信息，则赋予一个内容是空的ArrayList<Book>
 		}else{
 			shoppingBook = (List<Book>)session.getAttribute("shoppingBook");
 		}
 		int i = 0;
-		for(Book book :shoppingBook){
+		for(Book book :shoppingBook){//如果用户想要放入购物车的书已经在了，直接跳回原页面
 			if(bookId.equals(book.getBookid()+"")){
-				i++;
+				i++;//或者加数量？还得查数量够不够
 			}
-		}//如果用户想要放入购物车的书已经在了，直接跳回原页面
+		}
 		if(i==0){
 			Book book =bookManage.findBook(Integer.parseInt(bookId));
 			book.setBookAmount(1);
@@ -50,14 +50,14 @@ public class ShoppingCartAction extends ActionSupport{
 			}else{
 				totalMoney = (Double)session.getAttribute("totalMoney");
 				totalMoney+=book.getBookPrice();
-				session.removeAttribute("totalMoney");//修改总金额session值--》去除，添加
+				session.removeAttribute("totalMoney");//修改总金额session值--》去除，设置
 				session.setAttribute("totalMoney", totalMoney);
 			}
 			session.removeAttribute("shoppingBook");
 			session.setAttribute("shoppingBook", shoppingBook);
 		}
 		try{
-			response.sendRedirect("../singleBook.jsp?bookId="+bookId);
+			response.sendRedirect("../singleBook.jsp?bookId="+bookId);//返回原页面。多了session中总金额，书单shoppingBook
 		}catch(Exception e){
 			e.printStackTrace();
 		}

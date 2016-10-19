@@ -38,6 +38,7 @@ public class Book implements java.io.Serializable {
 	private Set<Bargain> bargains = new HashSet<Bargain>(0);
 	
 	private Set<Ordersbook> ordersbooks = new HashSet<Ordersbook>(0);
+	private double bookNewPrice;
 	
 	
 
@@ -219,6 +220,14 @@ public class Book implements java.io.Serializable {
 
 	public void setOrdersbooks(Set<Ordersbook> ordersbooks) {
 		this.ordersbooks = ordersbooks;
+	}
+
+	public double getBookNewPrice() {
+		return bookNewPrice;
+	}
+
+	public void setBookNewPrice(double bookNewPrice) {
+		this.bookNewPrice = bookNewPrice;
 	}
 
 	

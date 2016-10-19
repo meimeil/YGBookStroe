@@ -20,7 +20,7 @@ public class Bargain implements java.io.Serializable {
 
 	private Integer bargainId;
 	private Book book;
-	private Double boolNewPrice;
+	private Double boolNewPrice;//Êý¾Ý¿â´íÁË¡£
 
 	public Bargain() {
 	}

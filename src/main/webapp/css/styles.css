@@ -32,7 +32,7 @@ li{ list-style: none; }
 	bottom:0;
 	align:left;
 }
-#buttom{
+#bottom{
 	float:left;
 	margin-top:600px;
 	margin-left:-200px;
@@ -94,8 +94,9 @@ ul.allBookUl,ul.singleBookUl{
 }
 ul.singleBookUl{
 	padding-left:10px;
-	padding-top: 10px;
+	padding-top: 0px;
 }
+
 li.allBookHead,li.singleBookName,li.shoppingBookHead{
 	padding: 5px;
 	background-color: #FF6600;
