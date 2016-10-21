@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+                                "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-10-6 15:56:43 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
  <class catalog="shop" name="com.shop.beans.Orders" table="orders">
@@ -8,7 +8,7 @@
    <column name="ordersId"/>
    <generator class="assigned"/>
   </id>
-  <many-to-one class="com.shop.beans.User" fetch="select" name="user">
+  <many-to-one class="com.shop.beans.User" fetch="select" name="user" lazy="false">
    <column name="userid" not-null="true">
     <comment>ÓÃ»§idºÅ</comment>
    </column>
@@ -28,7 +28,7 @@
     <comment>´¦Àí×´Ì¬</comment>
    </column>
   </property>
-  <set fetch="select" inverse="true" lazy="true" name="ordersbooks"
+  <set fetch="select" inverse="true" lazy="true" name="ordersbooks" cascade = "all-delete-orphan"
    sort="unsorted" table="ordersbook">
    <key>
     <column name="ordersId" not-null="true">

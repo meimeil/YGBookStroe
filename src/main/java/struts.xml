@@ -3,74 +3,73 @@
 		"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
 		"http://struts.apache.org/dtds/struts-2.1.7.dtd">
 <struts>
-		<constant name="struts.objectFactory" value="spring"></constant>
- 		<constant name="struts.i18n.encoding" value="utf-8"></constant>
- 		<constant name="struts.custom.i18n.resources"  value="globalMessages"/>
- 		
-	<package name="defaulet" extends="struts-default" >
-	<interceptors>
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	<package name="defaulet" extends="struts-default">
+		<interceptors>
 			<interceptor name="userLoginCheck" class="interceptor.UserLoginCheck"></interceptor>
 		</interceptors>
-	  	<action name="enrollAction"   class="EnrollAction" >
-	  			<result name="input">/enroll.jsp</result>
-	  			<result name="success">/login.jsp</result>
+		<action name="enrollAction" class="EnrollAction">
+			<result name="input">/enroll.jsp</result>
+			<result name="success">/login.jsp</result>
 		</action>
-		<action name="loginAction"   class="LoginAction" method="loginCheck">
-	  			<result name="input">/login.jsp</result>
-	  			<result name="success" type="redirect">/firstPage.jsp</result>
+		<action name="loginAction" class="LoginAction" method="loginCheck">
+			<result name="input">/login.jsp</result>
+			<result name="success" type="redirect">/firstPage.jsp</result>
 		</action>
-		<action name="managerLoginAction"   class="LoginAction" method="managerLoginCheck">
-	  			<result name="input">/managerLogin.jsp</result>
-	  			<result name="success" type="redirect">/manage/manageWelcome.jsp</result>
+		<action name="managerLoginAction" class="LoginAction" method="managerLoginCheck">
+			<result name="input">/managerLogin.jsp</result>
+			<result name="success" type="redirect">/manage/manageWelcome.jsp</result>
 		</action>
-		
-		<action name="allBookAction"   class="AllBookAction" >
+
+		<action name="allBookAction" class="AllBookAction">
 		</action>
-		<action name="userExitAction"   class="UserExitAction" >
-				<result name="managerLogin">/managerLogin.jsp</result>
-	  			<result name="firstPage" type="redirect">/firstPage.jsp</result>
-	  			<result name="error"  type="redirect">/error.jsp</result>
+		<action name="userExitAction" class="UserExitAction">
+			<result name="managerLogin">/managerLogin.jsp</result>
+			<result name="firstPage" type="redirect">/firstPage.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
 		</action>
-		<action name="userInforAction"   class="UserInforAction" >
-				<result name="input">/personalInformation.jsp</result>
-	  			<result name="success" type="redirect">/firstPage.jsp</result>
-	  			<result name="error"  type="redirect">/error.jsp</result>
+		<action name="userInforAction" class="UserInforAction">
+			<result name="input">/personalInformation.jsp</result>
+			<result name="success" type="redirect">/firstPage.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
 		</action>
-		<action name="leftAction"   class="LeftAction" >
-		<result name="input">/Left.jsp</result>
-	  			<result name="success">/Left.jsp</result>
+		<action name="leftAction" class="LeftAction">
+			<result name="input">/Left.jsp</result>
+			<result name="success">/Left.jsp</result>
 		</action>
-		
-		<action name="oneTypeAction"   class="OneTypeAction" >
-				<result name="oneType" type="redirect">/oneType.jsp</result>
-	  			<result name="error"  type="redirect">/error.jsp</result>
+
+		<action name="oneTypeAction" class="OneTypeAction">
+			<result name="oneType" type="redirect">/oneType.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
 		</action>
-		<action name="singleBookAction"   class="SingleBookAction" >
-				<result name="success" type="redirect">/singleBook.jsp</result>
-	  			<result name="error"  type="redirect">/error.jsp</result>
+		<action name="singleBookAction" class="SingleBookAction">
+			<result name="success" type="redirect">/singleBook.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
 		</action>
-		<action name="shoppingCartAction"   class="ShoppingCartAction" >
+		<action name="shoppingCartAction" class="ShoppingCartAction">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<interceptor-ref name="userLoginCheck"></interceptor-ref>
 			<result name="login" type="redirect">/login.jsp </result>
 		</action>
-		<action name="ordersManageAction"   class="OrdersManageAction" >
-				<result name="success" type="redirect">/allOrders.jsp</result>
-	  			<result name="error"  type="redirect">/error.jsp</result>
-	  			<result name="login" type="redirect">/login.jsp </result>
-	  			<interceptor-ref name="defaultStack"></interceptor-ref>
+		<action name="ordersManageAction" class="OrdersManageAction">
+			<result name="success" type="redirect">/allOrders.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+			<result name="login" type="redirect">/login.jsp </result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<interceptor-ref name="userLoginCheck"></interceptor-ref>
 		</action>
-		<action name="updateCartAction"   class="UpdateCartAction" >
+		<action name="updateCartAction" class="UpdateCartAction">
 		</action>
-		<action name="ordersAction"   class="OrdersAction" >
+		<action name="ordersAction" class="OrdersAction">
 		</action>
-		<action name="singleOrdersAction"   class="SingleOrdersAction" >
+		<action name="singleOrdersAction" class="SingleOrdersAction">
 		</action>
-		<action name="dealOrdersAction"   class="DealOrdersAction" >
+		<action name="dealOrdersAction" class="DealOrdersAction">
 		</action>
-		<action name="bookAction"   class="BookAction" >
-		<interceptor-ref name="fileUpload">
+		<action name="bookAction" class="BookAction">
+			<interceptor-ref name="fileUpload">
 				<param name="allowedTypes">
 					image/jpeg,image/gif,image/bmp,image/png
 				</param>
@@ -89,13 +88,14 @@
 			</interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="input">/manage/updateBook.jsp?bookId=${bookId}</result>
-			<result name="success" type="redirect">/manage/updateBook.jsp?bookId=${bookId}</result>
-			<result name="error"  type="redirect">/error.jsp</result>
+			<result name="success" type="redirect">/manage/updateBook.jsp?bookId=${bookId}
+			</result>
+			<result name="error" type="redirect">/error.jsp</result>
 		</action>
 		<action name="allOrdersAction" class="AllOrdersAction">
 		</action>
 		<action name="userInformationAction" class="UserInformationAction">
-			<result name="error"  type="redirect">/error.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
 		</action>
 	</package>
 </struts>

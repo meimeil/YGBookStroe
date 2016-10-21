@@ -3,24 +3,24 @@
                                    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-10-6 15:56:43 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
- <class catalog="shop" name="com.shop.beans.Sex" table="sex">
-  <id name="sexid" type="int">
-   <column name="sexid"/>
-   <generator class="assigned"/>
-  </id>
-  <property generated="never" lazy="false" name="sexType" type="string">
-   <column length="4" name="sexType" not-null="true">
-    <comment>ÐÔ±ðÃèÊö</comment>
-   </column>
-  </property>
-  <set fetch="select" inverse="true" lazy="false" name="users"
-   sort="unsorted" table="user">
-   <key>
-    <column name="sexId" not-null="true">
-     <comment>ÐÔ±ð</comment>
-    </column>
-   </key>
-   <one-to-many class="com.shop.beans.User"/>
-  </set>
- </class>
+	<class catalog="shop" name="com.shop.beans.Sex" table="sex">
+		<id name="sexid" type="int">
+			<column name="sexid" />
+			<generator class="assigned" />
+		</id>
+		<property generated="never" lazy="false" name="sexType" type="string">
+			<column length="4" name="sexType" not-null="true">
+				<comment>ÐÔ±ðÃèÊö</comment>
+			</column>
+		</property>
+		<set fetch="select" inverse="true" lazy="false" name="users" sort="unsorted"
+			table="user">
+			<key>
+				<column name="sexId" not-null="true">
+					<comment>ÐÔ±ð</comment>
+				</column>
+			</key>
+			<one-to-many class="com.shop.beans.User" />
+		</set>
+	</class>
 </hibernate-mapping>

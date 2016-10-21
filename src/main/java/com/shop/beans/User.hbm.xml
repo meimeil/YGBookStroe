@@ -3,59 +3,62 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-10-6 15:56:43 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="com.shop.beans.User" table="user" catalog="shop" optimistic-lock="version">
-        <id name="userId" type="int">
-            <column name="userId" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="sex" class="com.shop.beans.Sex" fetch="select" lazy="false">
-            <column name="sexId" not-null="true">
-                <comment>&#208;&#212;&#177;&#240;</comment>
-            </column>
-        </many-to-one>
-        <property name="userName" type="string">
-            <column name="userName" length="16" not-null="true">
-                <comment>&#211;&#195;&#187;&#167;&#195;&#251;</comment>
-            </column>
-        </property>
-        <property name="userPassword" type="string">
-            <column name="userPassword" length="12" not-null="true">
-                <comment>&#195;&#220;&#194;&#235;</comment>
-            </column>
-        </property>
-        <property name="userEmail" type="string">
-            <column name="userEmail" length="100" not-null="true">
-                <comment>&#211;&#202;&#207;&#228;</comment>
-            </column>
-        </property>
-        <property name="userNickName" type="string">
-            <column name="userNickName" length="10">
-                <comment>&#234;&#199;&#179;&#198;</comment>
-            </column>
-        </property>
-        <property name="userAddress" type="string">
-            <column name="userAddress" length="100">
-                <comment>&#205;&#168;&#209;&#182;&#181;&#216;&#214;&#183;</comment>
-            </column>
-        </property>
-        <property name="userPhone" type="string">
-            <column name="userPhone" length="24">
-                <comment>&#181;&#231;&#187;&#176;</comment>
-            </column>
-        </property>
-        <property name="userRemark" type="string">
-            <column name="userRemark" length="100">
-                <comment>&#177;&#184;&#215;&#162;</comment>
-            </column>
-        </property>
-        <set name="orderses" table="orders" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="userid" not-null="true">
-                    <comment>&#211;&#195;&#187;&#167;id&#186;&#197;</comment>
-                </column>
-            </key>
-            <one-to-many class="com.shop.beans.Orders" />
-        </set>
-        
-    </class>
+	<class name="com.shop.beans.User" table="user" catalog="shop"
+		optimistic-lock="version">
+		<id name="userId" type="int">
+			<column name="userId" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="sex" class="com.shop.beans.Sex" fetch="select"
+			lazy="false">
+			<column name="sexId" not-null="true">
+				<comment>&#208;&#212;&#177;&#240;</comment>
+			</column>
+		</many-to-one>
+		<property name="userName" type="string">
+			<column name="userName" length="16" not-null="true">
+				<comment>&#211;&#195;&#187;&#167;&#195;&#251;</comment>
+			</column>
+		</property>
+		<property name="userPassword" type="string">
+			<column name="userPassword" length="12" not-null="true">
+				<comment>&#195;&#220;&#194;&#235;</comment>
+			</column>
+		</property>
+		<property name="userEmail" type="string">
+			<column name="userEmail" length="100" not-null="true">
+				<comment>&#211;&#202;&#207;&#228;</comment>
+			</column>
+		</property>
+		<property name="userNickName" type="string">
+			<column name="userNickName" length="10">
+				<comment>&#234;&#199;&#179;&#198;</comment>
+			</column>
+		</property>
+		<property name="userAddress" type="string">
+			<column name="userAddress" length="100">
+				<comment>&#205;&#168;&#209;&#182;&#181;&#216;&#214;&#183;</comment>
+			</column>
+		</property>
+		<property name="userPhone" type="string">
+			<column name="userPhone" length="24">
+				<comment>&#181;&#231;&#187;&#176;</comment>
+			</column>
+		</property>
+		<property name="userRemark" type="string">
+			<column name="userRemark" length="100">
+				<comment>&#177;&#184;&#215;&#162;</comment>
+			</column>
+		</property>
+		<set name="orderses" table="orders" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="userid" not-null="true">
+					<comment>&#211;&#195;&#187;&#167;id&#186;&#197;</comment>
+				</column>
+			</key>
+			<one-to-many class="com.shop.beans.Orders" />
+		</set>
+
+	</class>
 </hibernate-mapping>

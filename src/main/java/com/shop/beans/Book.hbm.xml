@@ -3,92 +3,103 @@
                                  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-10-6 15:56:43 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
- <class catalog="shop" name="com.shop.beans.Book" table="book">
-  <id name="bookid" type="int">
-   <column name="bookid"/>
-   <generator class="assigned"/>
-  </id>
-  <many-to-one class="com.shop.beans.Booktype" fetch="select" name="booktype" lazy="false">
-   <column name="typeId" not-null="true">
-    <comment>Àà±ðID</comment>
-   </column>
-  </many-to-one>
-  <property generated="never" lazy="false" name="bookNumber" type="string">
-   <column length="17" name="bookNumber" not-null="true">
-    <comment>±àºÅ</comment>
-   </column>
-  </property>
-  <property generated="never" lazy="false" name="bookName" type="string">
-   <column length="20" name="bookName" not-null="true">
-    <comment>ÊéÃû</comment>
-   </column>
-  </property>
-  <property generated="never" lazy="false" name="bookAuthor" type="string">
-   <column length="20" name="bookAuthor" not-null="true">
-    <comment>×÷Õß</comment>
-   </column>
-  </property>
-  <property generated="never" lazy="false" name="bookPress" type="string">
-   <column length="20" name="bookPress" not-null="true">
-    <comment>³ö°æÉç</comment>
-   </column>
-  </property>
-  <property generated="never" lazy="false" name="bookPicture" type="string">
-   <column length="100" name="bookPicture" not-null="true">
-    <comment>Í¼Æ¬Ãû³Æ</comment>
-   </column>
-  </property>
-  <property generated="never" lazy="false" name="bookAmount" type="int">
-   <column name="bookAmount" not-null="true">
-    <comment>ÊýÁ¿</comment>
-   </column>
-  </property>
-  <property generated="never" lazy="false" name="bookShelveTime" type="timestamp">
-   <column length="19" name="bookShelveTime" not-null="true">
-    <comment>ÉÏ¼ÜÊ±¼ä</comment>
-   </column>
-  </property>
-  <property generated="never" lazy="false" name="bookPrice" type="double">
-   <column name="bookPrice" not-null="true" precision="10">
-    <comment>¼Û¸ñ</comment>
-   </column>
-  </property>
-  <property generated="never" lazy="false" name="bookRemark" type="string">
-   <column length="100" name="bookRemark">
-    <comment>¼ò½é</comment>
-   </column>
-  </property>
-  <property generated="never" lazy="false" name="bookSales" type="int">
-   <column name="bookSales" not-null="true">
-    <comment>ÏúÊÛÁ¿</comment>
-   </column>
-  </property>
-  <set fetch="select" inverse="true" lazy="true" name="recommendeds"
-   sort="unsorted" table="recommended">
-   <key>
-    <column name="bookId" not-null="true">
-     <comment>Í¼ÊéID</comment>
-    </column>
-   </key>
-   <one-to-many class="com.shop.beans.Recommended"/>
-  </set>
-  <set fetch="select" inverse="true" lazy="true" name="bargains"
-   sort="unsorted" table="bargain">
-   <key>
-    <column name="bookId" not-null="true">
-     <comment>Í¼ÊéID</comment>
-    </column>
-   </key>
-   <one-to-many class="com.shop.beans.Bargain"/>
-  </set>
-  <set fetch="select" inverse="true" lazy="true" name="ordersbooks"
-   sort="unsorted" table="ordersbook">
-   <key>
-    <column name="bookId" not-null="true">
-     <comment>Í¼ÊéID</comment>
-    </column>
-   </key>
-   <one-to-many class="com.shop.beans.Ordersbook"/>
-  </set>
- </class>
+	<class catalog="shop" name="com.shop.beans.Book" table="book">
+		<id name="bookid" type="int">
+			<column name="bookid" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one class="com.shop.beans.Booktype" fetch="select"
+			name="booktype" lazy="false">
+			<column name="typeId" not-null="true">
+				<comment>Àà±ðID</comment>
+			</column>
+		</many-to-one>
+		<property generated="never" lazy="false" name="bookNumber"
+			type="string">
+			<column length="17" name="bookNumber" not-null="true">
+				<comment>±àºÅ</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="bookName"
+			type="string">
+			<column length="20" name="bookName" not-null="true">
+				<comment>ÊéÃû</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="bookAuthor"
+			type="string">
+			<column length="20" name="bookAuthor" not-null="true">
+				<comment>×÷Õß</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="bookPress"
+			type="string">
+			<column length="20" name="bookPress" not-null="true">
+				<comment>³ö°æÉç</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="bookPicture"
+			type="string">
+			<column length="100" name="bookPicture" not-null="true">
+				<comment>Í¼Æ¬Ãû³Æ</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="bookAmount"
+			type="int">
+			<column name="bookAmount" not-null="true">
+				<comment>ÊýÁ¿</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="bookShelveTime"
+			type="timestamp">
+			<column length="19" name="bookShelveTime" not-null="true">
+				<comment>ÉÏ¼ÜÊ±¼ä</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="bookPrice"
+			type="double">
+			<column name="bookPrice" not-null="true" precision="10">
+				<comment>¼Û¸ñ</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="bookRemark"
+			type="string">
+			<column length="100" name="bookRemark">
+				<comment>¼ò½é</comment>
+			</column>
+		</property>
+		<property generated="never" lazy="false" name="bookSales"
+			type="int">
+			<column name="bookSales" not-null="true">
+				<comment>ÏúÊÛÁ¿</comment>
+			</column>
+		</property>
+		<set fetch="select" inverse="true" lazy="true" name="recommendeds"
+			sort="unsorted" table="recommended">
+			<key>
+				<column name="bookId" not-null="true">
+					<comment>Í¼ÊéID</comment>
+				</column>
+			</key>
+			<one-to-many class="com.shop.beans.Recommended" />
+		</set>
+		<set fetch="select" inverse="true" lazy="true" name="bargains"
+			sort="unsorted" table="bargain">
+			<key>
+				<column name="bookId" not-null="true">
+					<comment>Í¼ÊéID</comment>
+				</column>
+			</key>
+			<one-to-many class="com.shop.beans.Bargain" />
+		</set>
+		<set fetch="select" inverse="true" lazy="true" name="ordersbooks"
+			sort="unsorted" table="ordersbook">
+			<key>
+				<column name="bookId" not-null="true">
+					<comment>Í¼ÊéID</comment>
+				</column>
+			</key>
+			<one-to-many class="com.shop.beans.Ordersbook" />
+		</set>
+	</class>
 </hibernate-mapping>

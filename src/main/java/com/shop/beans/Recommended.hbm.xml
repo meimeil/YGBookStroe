@@ -3,15 +3,17 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016-10-6 15:56:43 by Hibernate Tools 5.2.0.Beta1 -->
 <hibernate-mapping>
-    <class name="com.shop.beans.Recommended" table="recommended" catalog="shop" optimistic-lock="version">
-        <id name="recommendedId" type="java.lang.Integer">
-            <column name="recommendedId" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="book" class="com.shop.beans.Book" fetch="select" lazy="false">
-            <column name="bookId" not-null="true">
-                <comment>&#205;&#188;&#202;&#233;ID</comment>
-            </column>
-        </many-to-one>
-    </class>
+	<class name="com.shop.beans.Recommended" table="recommended"
+		catalog="shop" optimistic-lock="version">
+		<id name="recommendedId" type="java.lang.Integer">
+			<column name="recommendedId" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="book" class="com.shop.beans.Book"
+			fetch="select" lazy="false">
+			<column name="bookId" not-null="true">
+				<comment>&#205;&#188;&#202;&#233;ID</comment>
+			</column>
+		</many-to-one>
+	</class>
 </hibernate-mapping>

@@ -53,6 +53,16 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
   	<filter-name>struts2</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  <filter>
+  	<filter-name>managerLogin</filter-name>
+	<filter-class>filter.ManagerLoginCheck</filter-class>
+	 </filter>
+	  <!--           配置filter拦截的manage文件夹下           -->
+  <filter-mapping>
+  	<filter-name>managerLogin</filter-name>
+  	<url-pattern>/manage/*</url-pattern>
+  </filter-mapping>
      <!--
    <welcome-file-list>
     			<welcome-file>/enroll.jsp</welcome-file>

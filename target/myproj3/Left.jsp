@@ -4,27 +4,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>销量排行榜</title>
 </head>
 <body>
-<s:form action="leftAction"  executeResult="false">
-	<!--<s:action name="leftAction" executeResult="false"></s:action> 访问action文件，立即执行，且不显示执行结果 -->
-	<ul class="leftAction">
+
+	<s:action name="leftAction" executeResult="false"></s:action> <!-- 访问action文件，立即执行，且不显示执行结果 -->
+	<ul class="leftAction" >
 		<li class="leftBestSelling">销量排行榜<a class="more" href="oneType.jsp?searchType=bookStatus&searchDescribe=bestSelling">更多</a>
 		</li>
 		
 		<s:iterator value="#request.bestSellingBook"><!-- 获取request对象，名称是点后面的部分 -->
 			<li class="leftBookPicture"><a class="bookPicture" href="singleBook.jsp?bookid=<s:property value="bookid"/>">
 			<img  src='upload/<s:property value="bookPicture" />'/></a>
-			<img  src='resources/<s:property value="bookPicture" />'/>
-			<img src='upload/<s:property value="bookPicture" />'/>
-			<img  src='classes/upload/<s:property value="bookPicture" />'/>
-			<img  src='/upload/SQL4.jpg'/>
-			<s:property value="bookPicture"/>
 			</li>
 			
-			<li class="leftBookName"><a class="bookName" href="singleBook.jsp?bookid=<s:property value="bookid"/>">
+			<li class="leftBookName"><a class="bookName" href="singleBook.jsp?bookId=<s:property value="bookid"/>">
 			<s:property value="bookName"/></a>
 			</li>
 			<li class="leftBookAuthor">作者：<a class="aboutBook" href="oneType.jsp?searchType=bookAuthor&searchDescribe=<s:property value="bookAuthor"/>">
@@ -33,12 +29,12 @@
 			<li class="leftBookPress">出版社：<a class="aboutBook" href="oneType.jsp?searchType=bookPress&searchDescribe=<s:property value="bookPress"/>">
 			<s:property value="bookPress"/></a>
 			</li>
-			<li class="leftBookType">类别：<a class="aboutBook" href="oneType.jsp?searchType=booktype&searchDescribe=<s:property value="booktype"/>">
+			<li class="leftBookType">类别：<a class="aboutBook" href="oneType.jsp?searchType=bookType&searchDescribe=<s:property value="booktype.typeId"/>">
 			<s:property value="booktype.typeName"/></a>
 			</li>
 			<li><hr/></li>
 		</s:iterator>
 	</ul>
-	</s:form>
+	
 </body>
 </html>
