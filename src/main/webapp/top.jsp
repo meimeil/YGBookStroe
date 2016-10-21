@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     <%@taglib uri="/struts-tags" prefix="s"%>
+    <%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +15,7 @@
 		<div id="top">
 			<div width="100%" height="30px" style="margin-left: 0px;margin-top:10px;" align="left">
 			<s:if test="%{#session.loginUser == null}">
-			亲，欢迎来阳光书店！请 <a href="enroll.jsp">注册</a> &nbsp;|&nbsp;<a href="login.jsp">登录</a>
+			亲，欢迎来阳光书店！请 <a href="../enroll.jsp">注册</a> &nbsp;|&nbsp;<a href="<%=basePath%>login.jsp">登录</a>
 			</s:if>
 			<s:else>
 					<font style="color:green;font-weight: bold">
@@ -19,14 +23,14 @@
 					</font>
 					您好！欢迎光临阳光书店
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="firstPage.jsp"><font style="color: #FF6600;font-weight: bold;">首页</font></a>&nbsp;|&nbsp;<a href="personalInformation.jsp">个人信息</a> &nbsp;|&nbsp;<a href="shoppingCart.jsp">我的购物车</a>&nbsp;|&nbsp; <a href="allOrders.jsp">我的订单</a> &nbsp;|&nbsp;<a href="http://school.itzcn.com/help.html" target="_blank">帮助中心</a>
+					<a href="firstPage.jsp"><font style="color: #FF6600;font-weight: bold;">首页</font></a>&nbsp;|&nbsp;<a href="personalInformation.jsp">个人信息</a> &nbsp;|&nbsp;<a href="shoppingCart.jsp">我的购物车</a>&nbsp;|&nbsp; <a href="allOrders.jsp">我的订单</a> &nbsp;|&nbsp;<a href="about:blank" target="_blank">帮助中心</a>
 				| <a onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.baidu.com');" href="#">设为首页</a> | <a href="javascript:window.external.AddFavorite('http://www.baidu.com')">加入收藏</a>&nbsp;|&nbsp;
 					<a href="com.shop.action/userExitAction.action?userType=ordinaryUser">安全退出</a>
 			</s:else>
 			</div>
-			
-			<div id="logo" >
-				<a href="http://www.baidu.com"><img src="image/logo.png"/></a>
+			<div style="width:100%;height:110px;" >
+			<div id="logo" ><!-- 图片路径前加上<%= request.getContextPath() %>变成绝对路径/ -->
+				<a href="http://www.baidu.com"><img src="<%= request.getContextPath() %>/image/logo.png"/></a>
 			</div>
 			
 			<div id="searchBook" >
@@ -37,11 +41,12 @@
 					<input type="text" name="searchDescribe" id="searchDescribeID" class="input" />
 			</div>
 			<div>
-					<input type="button"  onclick="searchBook()" style="width: 131px;height: 35px;background-image:url(image/search.jpg)" class="search"/>
+					<input type="button"  onclick="searchBook()" style="width: 131px;height: 35px;background-image:url(<%= request.getContextPath() %>/image/search.jpg)" class="search"/>
 			
 			</div>
-			<div  style="margin-top: 2px;width:100%;float:left"><hr/></div>
 			
+			<div  style="margin-top: 2px;width:100%;float:left"><hr/></div>
+			</div>
 		</div>
 	</center>
 </body>

@@ -7,7 +7,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-public class OrdersManage {
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+public class OrdersManage  extends HibernateDaoSupport{
 	//增加一个订单
 	public int addOrders(Orders orders){
 		Session session = HibernateSessionFactory.getSession();
@@ -16,7 +17,7 @@ public class OrdersManage {
 		try{
 			tx=session.beginTransaction();
 			session.save(orders);
-			String sql="select max(orderId)from Orders";
+			String sql="select max(ordersId)from Orders";
 			List<Integer> idList = session.createQuery(sql).list();
 			if(idList.size()>0){
 				i=idList.get(0);
@@ -33,15 +34,20 @@ public class OrdersManage {
 	public int deleteOrders(int ordersId) {
 		Session session = HibernateSessionFactory.getSession();
 		Transaction tx = null;
-		int i = 0;
+		int i = 1;
 		try{
 			tx = session.beginTransaction();
-			session.delete(session.get("com.shop.beans.Orders", ordersId));
-			i = 1;
+			//catID 不能是long,int 型的，必须是 Long, Integer型的。
+			Orders order=(Orders)session.get("com.shop.beans.Orders", new Integer(ordersId));
+			//添加cascade=all-delete-orphan
+			session.delete(order);
+			
 			tx.commit();
 		}catch(RuntimeException re){
 			re.printStackTrace();
+			i=0;
 			tx.rollback();
+			
 		}
 		session.close();
 		return i ;
@@ -53,6 +59,7 @@ public class OrdersManage {
 		Session session = HibernateSessionFactory.getSession();
 		try{
 			Orders orders = (Orders)session.get("com.shop.beans.Orders", ordersId);
+			//get方法首先查询session缓存，没有的话查询二级缓存，最后查询数据库；反而load方法创建时首先查询session缓存，没有就创建代理，实际使用数据时才查询二级缓存和数据库
 			return orders;
 		}catch(RuntimeException re){
 			throw re;
@@ -147,4 +154,20 @@ public class OrdersManage {
 			session.close();
 			return allOrders;
 		}
+		//根据userId,订单处理状态获取该用户所有订单
+		@SuppressWarnings("unchecked")
+		public List<Orders> allOrdersByUserDeal(int userId,String isDeal,int pageNumber,int pageSize){
+			Session session = HibernateSessionFactory.getSession();
+			String hql = "from Orders as orders where orders.user.userId="+userId+" and orders.isDeal='"+isDeal+"' order by ordersTime desc";
+			try{
+				List<Orders> allOrdersByUser = session.createQuery(hql).list();
+				session.close();
+				return allOrdersByUser;
+			}catch(RuntimeException re){
+				throw re;
+			}
+		}
+		
+		
+
 }

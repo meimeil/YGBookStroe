@@ -101,26 +101,26 @@ li.allBookHead,li.singleBookName,li.shoppingBookHead{
 	padding: 5px;
 	background-color: #FF6600;
 	text-align: left;
-	
+	width:692px;
 	font-weight: bold;
 	color:yellow;
 	margin-bottom: 10px;
 }
 li.allBookPicture,li.singleBookPicture{
-	width: 120px;
+	width: 80px;
 	float: left;
 	height: 120px;
 }
 li.allBookPicture img,li.singleBookPicture img{
-	width: 90px;
+	width: 80px;
 	height: 104px;
 }
 li.allBookInfor{
-	width: 150px;
+	width: 130px;
 	float: left;
 	padding-left: 10px;
 	text-align: left;
-	height: 120px;
+	height: 150px;
 }
 li.singleBookInfor{
 	width: 550px;
@@ -167,8 +167,9 @@ ul.shoppingBookUl,ul.singleOrders{
 	list-style:none;
 	width: 702px;
 }
-ul.shoppingBookUl li,ul.singleOrders{
-	height: 25px;
+ul.shoppingBookUl ,ul.shoppingBookUl li ,ul.singleOrders{
+	height: 30px;
+	float:left;
 }
 a.more{
 	color: white;

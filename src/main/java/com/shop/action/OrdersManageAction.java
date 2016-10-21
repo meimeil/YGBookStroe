@@ -39,10 +39,10 @@ public class OrdersManageAction extends ActionSupport{
 			orders.setOrdersTime(new Timestamp(new Date().getTime()));
 			orders.setIsDeal('0');
 			orders.setTotalMoney(totalMoney);
-			String ordersNumber = "DDBH";
+			String ordersNumber = "YGBN";
 			DateFormat format = new SimpleDateFormat("yyMMddHHmmss");
 			String formatDate = format.format(new Date());
-			int random = new Random().nextInt(100000);
+			int random = new Random().nextInt(100000);//random的nextInt(int n)方法可以生成一个介于0(包含)到n(不包含)之间的整数 
 			ordersNumber +=  formatDate+random;
 			
 			orders.setOrderNumber(ordersNumber);

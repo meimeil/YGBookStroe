@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 public class BookManage extends HibernateDaoSupport{
 	public List<Book> bestSellingBook(int pageNumber,int pageSize){
 		Session session = HibernateSessionFactory.getSession();
@@ -184,5 +185,38 @@ public class BookManage extends HibernateDaoSupport{
 		}
 		return listByTypeBook;
 	}
-
+	// 添加新的图书
+	public int addBook(Book book) {
+		int i = 1;
+		Session session = HibernateSessionFactory.getSession();
+		Transaction tx = session.beginTransaction();
+		try {
+			tx=session.beginTransaction();
+			session.save(book);
+			tx.commit();
+		} catch (Exception e) {
+			i = 0;
+			e.printStackTrace();
+			tx.rollback();
+		}
+		session.close();//关闭Session
+		return i;
+	}
+	// 修改图书
+		public int updateBook(Book book) {
+			int i = 1;
+			Session session = HibernateSessionFactory.getSession();
+			Transaction tx = session.beginTransaction();
+			try {
+				session.update(book);//update 操作要在事务中提交，否则不能变成持久态
+				tx.commit();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				i = 0;
+				tx.rollback();
+			}
+			session.close();
+			return i;
+			}
 }

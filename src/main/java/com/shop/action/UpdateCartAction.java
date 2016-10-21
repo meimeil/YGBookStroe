@@ -11,7 +11,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.shop.beans.Book;
-
+//更新购物车，改变图书数量，删除图书
 public class UpdateCartAction extends ActionSupport{
 	public String execute(){
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -38,7 +38,8 @@ public class UpdateCartAction extends ActionSupport{
 				Book book = (Book)iter.next();
 				if(bookId.equals(book.getBookid()+"")){
 					totalMoney -= book.getBookAmount()*book.getBookPrice();
-					iter.remove();
+					iter.remove();//iterator 是工作在一个独立的线程中，并且拥有一个 mutex 锁。 在工作的时候是不允许被迭代的对象被改变的.
+					//但你可以使用 Iterator 本身的方法 remove() 来删除对象，Iterator.remove() 方法会在删除当前迭代对象的同时维护索引的一致性。 
 				}
 			}
 		}
@@ -47,7 +48,7 @@ public class UpdateCartAction extends ActionSupport{
 		session.removeAttribute("totalMoney");
 		session.setAttribute("totalMoney", totalMoney);
 		try {
-			response.sendRedirect("../shoppingCart.jsp");
+			response.sendRedirect("../shoppingCart.jsp");//response.sendRedirect回到购物车页面，或者在action里用result控制视图
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

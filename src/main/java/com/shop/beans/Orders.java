@@ -22,9 +22,9 @@ import javax.persistence.TemporalType;
 @Table(name = "orders", catalog = "shop")
 public class Orders implements java.io.Serializable {
 
-	private int ordersId;
+	private int ordersId;//сп s 
 	private User user;
-	private String orderNumber;//s
+	private String orderNumber;//ц╩ s
 	private Date ordersTime;
 	private char isDeal;
 	private Set<Ordersbook> ordersbooks = new HashSet<Ordersbook>(0);

@@ -3,7 +3,6 @@
 	xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-
 	<!-- default-autowire="byName" default-lazy-init="true"<context:annotation-config /> -->
 
 	<bean id="EnrollAction" class="com.shop.action.EnrollAction"
@@ -36,9 +35,15 @@
 		lazy-init="default" autowire="default" >
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="OrdersManageAction" class="com.shop.action.OrdersManageAction"
+	<bean id="ordersManage" class="Dao.OrdersManage" abstract="false"
+		lazy-init="default" autowire="default" >
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="UserInformationAction" class="com.shop.action.UserInformationAction"
 		scope="prototype" lazy-init="default" autowire="default">
-		
+		<property name="personManage">
+			<ref bean="personManage" />
+		</property>
 	</bean>
 	<bean id="LoginAction" class="com.shop.action.LoginAction"
 		scope="prototype" lazy-init="default" autowire="default">
@@ -54,9 +59,6 @@
 	</bean>
 	<bean id="UserExitAction" class="com.shop.action.UserExitAction"
 		scope="prototype" lazy-init="default" autowire="default">
-		<property name="personManage">
-			<ref bean="personManage" />
-		</property>
 	</bean>
 	<bean id="AllBookAction" class="com.shop.action.AllBookAction"
 		scope="prototype" lazy-init="default" autowire="default">
@@ -76,10 +78,65 @@
 			<ref bean="bookManage" />
 		</property>
 	</bean>
+	<!--  创建购物车-->
 	<bean id="ShoppingCartAction" class="com.shop.action.ShoppingCartAction"
 		scope="prototype" lazy-init="default" autowire="default">
-		<property name="orderManage">
-			<ref bean="orderManage" />
+		<property name="bookManage">
+			<ref bean="bookManage" />
+		</property>
+	</bean>
+	<bean id="OrdersManageAction" class="com.shop.action.OrdersManageAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="ordersManage">
+			<ref bean="ordersManage" />
+		</property>
+	</bean>
+	<!--  更新购物车-->
+	<bean id="UpdateCartAction" class="com.shop.action.UpdateCartAction"
+		scope="prototype" lazy-init="default" autowire="default">
+	</bean>
+	<!-- 订单显示 -->
+	<bean id="OrdersAction" class="com.shop.action.OrdersAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="ordersManage">
+			<ref bean="ordersManage" />
+		</property>
+	</bean>
+	<!-- 构造单个订单信息，书目，总金额 -->
+	<bean id="SingleOrdersAction" class="com.shop.action.SingleOrdersAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="ordersManage">
+			<ref bean="ordersManage" />
+		</property>
+		<property name="bookManage">
+			<ref bean="bookManage" />
+		</property>
+	</bean>
+	<!-- 添加图书 -->
+	<bean id="BookAction" class="com.shop.action.BookAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="bookManage">
+			<ref bean="bookManage" />
+		</property>
+	</bean>
+	<!-- 修改图书信息 -->
+	<bean id="UpdateBookAction" class="com.shop.action.UpdateBookAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="bookManage">
+			<ref bean="bookManage" />
+		</property>
+	</bean>
+	<!-- 管理员的订单显示 -->
+	<bean id="AllOrdersAction" class="com.shop.action.AllOrdersAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="ordersManage">
+			<ref bean="ordersManage" />
+		</property>
+	</bean>
+	<bean id="DealOrdersAction" class="com.shop.action.DealOrdersAction"
+		scope="prototype" lazy-init="default" autowire="default">
+		<property name="ordersManage">
+			<ref bean="ordersManage" />
 		</property>
 	</bean>
 </beans>
